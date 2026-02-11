@@ -18,13 +18,13 @@ const shouldUseMock = () => {
     return !API_KEY || API_KEY.includes('PON_TU_API_KEY') || API_KEY === '';
 };
 
-export const getTrending = async (timeWindow: 'day' | 'week' = 'day'): Promise<(Movie | TVShow)[]> => {
+export const getTrending = async (timeWindow: 'day' | 'week' = 'day', page: number = 1): Promise<(Movie | TVShow)[]> => {
     if (shouldUseMock()) {
         console.log("Using Mock Data for Trending");
         return [...mockMovies, ...mockTVShows];
     }
     try {
-        const response = await api.get<SearchResult>(`/trending/all/${timeWindow}`);
+        const response = await api.get<SearchResult>(`/trending/all/${timeWindow}`, { params: { page } });
         return response.data.results;
     } catch (e) {
         console.warn("API Error, falling back to mock:", e);
@@ -32,20 +32,20 @@ export const getTrending = async (timeWindow: 'day' | 'week' = 'day'): Promise<(
     }
 };
 
-export const getPopularMovies = async (): Promise<Movie[]> => {
+export const getPopularMovies = async (page: number = 1): Promise<Movie[]> => {
     if (shouldUseMock()) return mockMovies;
     try {
-        const response = await api.get<SearchResult>('/movie/popular');
+        const response = await api.get<SearchResult>('/movie/popular', { params: { page } });
         return response.data.results as Movie[];
     } catch (e) {
         return mockMovies;
     }
 };
 
-export const getPopularTV = async (): Promise<TVShow[]> => {
+export const getPopularTV = async (page: number = 1): Promise<TVShow[]> => {
     if (shouldUseMock()) return mockTVShows;
     try {
-        const response = await api.get<SearchResult>('/tv/popular');
+        const response = await api.get<SearchResult>('/tv/popular', { params: { page } });
         return response.data.results as TVShow[];
     } catch (e) {
         return mockTVShows;
@@ -98,19 +98,39 @@ export const getTVDetails = async (id: number) => {
     }
 };
 
-export const discoverMovies = async (genreId?: number, sortBy: string = 'popularity.desc'): Promise<Movie[]> => {
+export const discoverMovies = async (genreId?: number, sortBy: string = 'popularity.desc', page: number = 1): Promise<Movie[]> => {
     if (shouldUseMock()) {
         if (genreId) return mockMovies.filter(m => m.genre_ids.includes(genreId));
         return mockMovies;
     }
     try {
-        const params: any = { sort_by: sortBy };
+        const params: any = { sort_by: sortBy, page };
         if (genreId) params.with_genres = genreId;
         const response = await api.get<SearchResult>('/discover/movie', { params });
         return response.data.results as Movie[];
     } catch (e) {
         if (genreId) return mockMovies.filter(m => m.genre_ids.includes(genreId));
         return mockMovies;
+    }
+};
+
+export const getUpcomingMovies = async (page: number = 1): Promise<Movie[]> => {
+    if (shouldUseMock()) return mockMovies.slice(0, 5);
+    try {
+        const response = await api.get<SearchResult>('/movie/upcoming', { params: { page } });
+        return response.data.results as Movie[];
+    } catch (e) {
+        return mockMovies.slice(0, 5);
+    }
+};
+
+export const getTopRated = async (page: number = 1): Promise<Movie[]> => {
+    if (shouldUseMock()) return mockMovies.slice().sort((a, b) => b.vote_average - a.vote_average);
+    try {
+        const response = await api.get<SearchResult>('/movie/top_rated', { params: { page } });
+        return response.data.results as Movie[];
+    } catch (e) {
+        return mockMovies.slice().sort((a, b) => b.vote_average - a.vote_average);
     }
 };
 

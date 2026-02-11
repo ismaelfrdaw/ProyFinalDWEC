@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../components/molecules/SearchBar';
 import MovieGrid from '../components/organisms/MovieGrid';
 import Loader from '../components/atoms/Loader';
-import { getTrending, getPopularTV, imageUrl } from '../services/api';
+import { getTrending, getPopularTV, getUpcomingMovies, getTopRated, imageUrl } from '../services/api';
 import type { Movie, TVShow } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import logo from '../assets/logo.jpg';
@@ -12,19 +12,25 @@ const HomePage = () => {
     const { t } = useLanguage();
     const [trending, setTrending] = useState<(Movie | TVShow)[]>([]);
     const [popularTV, setPopularTV] = useState<TVShow[]>([]);
+    const [upcoming, setUpcoming] = useState<Movie[]>([]);
+    const [topRated, setTopRated] = useState<Movie[]>([]);
     const [loading, setLoading] = useState(true);
     const [heroImage, setHeroImage] = useState<string>('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [trendingData, tvData] = await Promise.all([
+                const [trendingData, tvData, upcomingData, topData] = await Promise.all([
                     getTrending(),
-                    getPopularTV()
+                    getPopularTV(),
+                    getUpcomingMovies(),
+                    getTopRated()
                 ]);
 
                 setTrending(trendingData);
                 setPopularTV(tvData);
+                setUpcoming(upcomingData);
+                setTopRated(topData);
 
                 // Set hero image from the first trending item
                 if (trendingData.length > 0) {
@@ -92,9 +98,13 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                <MovieGrid title={t.home.trending} items={trending.slice(0, 10)} />
+                <MovieGrid title={t.home.trending} items={trending.slice(0, 20)} />
 
-                <MovieGrid title={t.home.popular_tv} items={popularTV.slice(0, 10)} />
+                <MovieGrid title={t.home.popular_tv} items={popularTV.slice(0, 20)} />
+
+                <MovieGrid title={t.home.upcoming} items={upcoming.slice(0, 20)} />
+
+                <MovieGrid title={t.home.top_rated} items={topRated.slice(0, 20)} />
             </div>
         </div>
     );

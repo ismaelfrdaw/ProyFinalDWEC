@@ -10,13 +10,16 @@ export const translations = {
             welcome: "Bienvenido a",
             subtitle: "Millones de películas, programas de TV y personas por descubrir. Explora ahora.",
             trending: "Tendencias de Hoy",
-            popular_tv: "Series Populares"
+            popular_tv: "Series Populares",
+            upcoming: "Próximas Estrenos",
+            top_rated: "Mejor Valoradas"
         },
         movies: {
             title: "Explorar Películas",
             filter_genre: "Filtrar por Género",
             all_genres: "Todos",
             sort_by: "Ordenar por:",
+            load_more: "Cargar más Películas",
             sort_options: {
                 popularity: "Más Populares",
                 rating: "Mejor Valoradas",
@@ -151,18 +154,21 @@ export const translations = {
             welcome: "Welcome to",
             subtitle: "Millions of movies, TV shows and people to discover. Explore now.",
             trending: "Trending Today",
-            popular_tv: "Popular Series"
+            popular_tv: "Popular Series",
+            upcoming: "Upcoming Movies",
+            top_rated: "Top Rated"
         },
         movies: {
-            title: "Explorar Películas",
-            filter_genre: "Filtrar por Género",
-            all_genres: "Todos",
-            sort_by: "Ordenar por:",
+            title: "Explore Movies",
+            filter_genre: "Filter by Genre",
+            all_genres: "All",
+            sort_by: "Sort by:",
+            load_more: "Load more Movies",
             sort_options: {
-                popularity: "Más Populares",
-                rating: "Mejor Valoradas",
-                newest: "Más Recientes",
-                revenue: "Más Taquilleras"
+                popularity: "Popularity",
+                rating: "Rating",
+                newest: "Newest",
+                revenue: "Revenue"
             }
         },
         search: {

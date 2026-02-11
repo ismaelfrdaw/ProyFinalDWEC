@@ -20,13 +20,13 @@ Este proyecto demuestra el dominio de:
 *   Estilizado premium con **Tailwind CSS**.
 
 ## ✨ Características Principales
-1.  **Exploración de Tendencias:** Portada dinámica con los contenidos más populares.
+1.  **Exploración de Tendencias (Home XL):** Portada dinámica expandida con secciones de Tendencias, Series Populares, Próximos Estrenos y Mejor Valoradas.
 2.  **Recomendador Dinámico (Quiz):** Algoritmo inteligente que recomienda películas/series basadas en las respuestas del usuario a un test rápido.
-3.  **Búsqueda Global:** Buscador integrado para localizar cualquier título en la inmensa base de datos de TMDB.
-4.  **Multilenguaje Real:** Soporte completo para **Español** e **Inglés**, incluyendo metadatos de la API.
-5.  **Modo Oscuro/Claro:** Interfaz cinemática con selector de tema para una experiencia de visualización óptima.
-6.  **Trailers Integrados:** Reproducción nativa de trailers de YouTube dentro de la ficha de detalle.
-7.  **Filtrado Avanzado:** Catálogo completo con filtros por género y ordenación inteligente.
+3.  **Búsqueda Interactiva:** Página de búsqueda rediseñada con buscador integrado y recomendaciones de tendencias automáticas cuando no hay una búsqueda activa.
+4.  **Multilenguaje Real:** Soporte completo para **Español** e **Inglés**, incluyendo metadatos de la API sincronizados.
+5.  **Modo Oscuro/Claro Cinematic:** Interfaz de alto impacto visual con paleta "Hollywood" (Rojo/Oro/Carbono) y footer negro persistente.
+6.  **Trailers Integrados:** Reproducción nativa de trailers de YouTube directamente en la app.
+7.  **Catálogo Infinito:** Página de películas con sistema de paginación ("Cargar más"), filtros por género y ordenación avanzada.
 
 ## 🛠️ Tecnologías Utilizadas
 *   **Core:** React 18, TypeScript, Vite.

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import MovieGrid from '../components/organisms/MovieGrid';
 import Loader from '../components/atoms/Loader';
-import { searchMulti } from '../services/api';
+import SearchBar from '../components/molecules/SearchBar';
+import { searchMulti, getTrending } from '../services/api';
 import type { Movie, TVShow } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -11,7 +12,18 @@ const SearchPage = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q') || '';
     const [results, setResults] = useState<(Movie | TVShow)[]>([]);
+    const [trending, setTrending] = useState<(Movie | TVShow)[]>([]);
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const fetchTrending = async () => {
+            if (!query) {
+                const data = await getTrending('week');
+                setTrending(data);
+            }
+        };
+        fetchTrending();
+    }, [query]);
 
     useEffect(() => {
         if (!query) {
@@ -37,20 +49,36 @@ const SearchPage = () => {
     }, [query]);
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <div className="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {t.search.results_for} <span className="text-red-500">{query ? `"${query}"` : '...'}</span>
+        <div className="container mx-auto px-4 py-12">
+            <div className="max-w-4xl mx-auto mb-16 text-center">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 drop-shadow-lg">
+                    {query ? t.search.results_for : t.nav.search} {query && <span className="text-red-600 block md:inline">"{query}"</span>}
                 </h1>
-                <div className="w-full md:w-auto">
-                    {/* Optional: Add a local search bar if user wants to refine search from here */}
+                <div className="flex justify-center scale-110 md:scale-125 mb-4">
+                    <SearchBar />
                 </div>
             </div>
 
             {loading ? (
-                <Loader />
+                <div className="py-20 flex justify-center"><Loader /></div>
+            ) : query ? (
+                results.length > 0 ? (
+                    <MovieGrid items={results} />
+                ) : (
+                    <div className="text-center py-20 text-gray-500">
+                        <p className="text-2xl">{t.search.no_results}</p>
+                    </div>
+                )
             ) : (
-                <MovieGrid items={results} />
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div className="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
+                        <div className="w-2 h-8 bg-red-600 rounded-full"></div>
+                        <h2 className="text-2xl font-bold text-white uppercase tracking-wider">
+                            {t.home.trending}
+                        </h2>
+                    </div>
+                    <MovieGrid items={trending} />
+                </div>
             )}
         </div>
     );
