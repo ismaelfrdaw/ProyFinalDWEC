@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from '../components/molecules/SearchBar';
 import MovieGrid from '../components/organisms/MovieGrid';
 import Loader from '../components/atoms/Loader';
@@ -71,23 +72,23 @@ const HomePage = () => {
             <div className="container mx-auto px-4 -mt-8 relative z-20 space-y-12 pb-12">
 
                 {/* Quiz CTA */}
-                <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden group">
+                <div className="bg-gradient-to-br from-gray-900 to-red-950 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden group border border-white/5">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-64 w-64 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-64 w-64 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M17.636 17.636l-.707-.707M12 21v-1M4.364 17.636l.707-.707M3 12h1m1.636-6.364l.707.707" />
                         </svg>
                     </div>
                     <div className="relative z-10 max-w-2xl">
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{t.quiz.title}</h2>
-                        <p className="text-purple-200 text-lg mb-8">
+                        <p className="text-gray-300 text-lg mb-8">
                             {t.quiz.subtitle}
                         </p>
-                        <a
-                            href="/quiz"
-                            className="inline-block bg-white text-purple-900 font-bold py-4 px-8 rounded-full hover:bg-purple-100 transition-colors shadow-lg hover:shadow-white/25 transform hover:-translate-y-1"
+                        <Link
+                            to="/quiz"
+                            className="inline-block bg-red-600 text-white font-bold py-4 px-8 rounded-full hover:bg-red-700 transition-all shadow-lg shadow-red-900/20 transform hover:-translate-y-1"
                         >
                             {t.quiz.cta}
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

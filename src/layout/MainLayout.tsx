@@ -23,10 +23,10 @@ const MainLayout = () => {
                     </div>
                     <div className="flex items-center gap-6">
                         <nav className="hidden md:flex gap-6 text-sm font-medium">
-                            <Link to="/" className="hover:text-red-500 transition">{t.nav.home}</Link>
-                            <Link to="/movies" className="hover:text-red-500 transition">{t.nav.movies}</Link>
-                            <Link to="/quiz" className="hover:text-purple-500 transition font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{t.nav.quiz}</Link>
-                            <Link to="/search" className="hover:text-red-500 transition">{t.nav.search}</Link>
+                            <Link to="/" className="hover:text-red-600 transition">{t.nav.home}</Link>
+                            <Link to="/movies" className="hover:text-red-600 transition">{t.nav.movies}</Link>
+                            <Link to="/quiz" className="hover:text-amber-500 transition font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">{t.nav.quiz}</Link>
+                            <Link to="/search" className="hover:text-red-600 transition">{t.nav.search}</Link>
                         </nav>
 
                         <div className="flex items-center gap-2 border-l border-gray-300 dark:border-gray-700 pl-4 ml-2">
@@ -60,8 +60,8 @@ const MainLayout = () => {
                 <Outlet />
             </main>
 
-            <footer className="bg-white dark:bg-black py-8 border-t border-gray-200 dark:border-white/10 mt-auto transition-colors duration-300">
-                <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
+            <footer className="bg-black py-8 border-t border-white/5 mt-auto transition-colors duration-300">
+                <div className="container mx-auto px-4 text-center text-gray-400 text-sm">
                     <div className="flex justify-center mb-4">
                         <div className="h-16 w-16 overflow-hidden rounded-full border border-gray-200 dark:border-white/10 shadow-lg brightness-90">
                             <img src={logo} alt="MJI Films" className="h-full w-full object-cover" />

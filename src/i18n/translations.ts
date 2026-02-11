@@ -12,6 +12,18 @@ export const translations = {
             trending: "Tendencias de Hoy",
             popular_tv: "Series Populares"
         },
+        movies: {
+            title: "Explorar Películas",
+            filter_genre: "Filtrar por Género",
+            all_genres: "Todos",
+            sort_by: "Ordenar por:",
+            sort_options: {
+                popularity: "Más Populares",
+                rating: "Mejor Valoradas",
+                newest: "Más Recientes",
+                revenue: "Más Taquilleras"
+            }
+        },
         search: {
             placeholder: "Buscar una película, serie, persona...",
             no_results: "No se encontraron resultados",
