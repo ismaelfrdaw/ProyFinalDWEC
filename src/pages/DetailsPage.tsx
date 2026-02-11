@@ -72,9 +72,9 @@ const DetailsPage = () => {
                 id: item.id,
                 title,
                 poster_path: item.poster_path,
-                rating: item.vote_average,
+                vote_average: item.vote_average,
                 media_type: isMovie ? 'movie' : 'tv',
-                year: date
+                release_date: date
             });
         }
     };
