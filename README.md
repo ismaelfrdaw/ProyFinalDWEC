@@ -23,17 +23,20 @@ Este proyecto demuestra el dominio de:
 1.  **Exploración de Tendencias (Home XL):** Portada dinámica expandida con secciones de Tendencias, Series Populares, Próximos Estrenos y Mejor Valoradas.
 2.  **Recomendador Dinámico (Quiz):** Algoritmo inteligente que recomienda películas/series basadas en las respuestas del usuario a un test rápido.
 3.  **Búsqueda Interactiva:** Página de búsqueda rediseñada con buscador integrado y recomendaciones de tendencias automáticas cuando no hay una búsqueda activa.
-4.  **Multilenguaje Real:** Soporte completo para **Español** e **Inglés**, incluyendo metadatos de la API sincronizados.
-5.  **Modo Oscuro/Claro Cinematic:** Interfaz de alto impacto visual con paleta "Hollywood" (Rojo/Oro/Carbono) y footer negro persistente.
-6.  **Trailers Integrados:** Reproducción nativa de trailers de YouTube directamente en la app.
-7.  **Catálogo Infinito:** Página de películas con sistema de paginación ("Cargar más"), filtros por género y ordenación avanzada.
+4.  **"Mi Lista" (Favoritos):** Sistema persistente de favoritos con `LocalStorage` que permite guardar contenido para verlo más tarde.
+5.  **Experiencia Cinemática:** Animaciones fluidas, transiciones de página suaves y efectos de hover premium integrales utilizando **Framer Motion**.
+6.  **Multilenguaje Real:** Soporte completo para **Español** e **Inglés**, incluyendo metadatos de la API sincronizados.
+7.  **Modo Oscuro/Claro Cinematic:** Interfaz de alto impacto visual con paleta "Hollywood" (Rojo/Oro/Carbono) y footer negro persistente.
+8.  **Trailers Integrados:** Reproducción nativa de trailers de YouTube directamente en la app.
+9.  **Catálogo Infinito:** Página de películas con sistema de paginación ("Cargar más"), filtros por género y ordenación avanzada.
 
 ## 🛠️ Tecnologías Utilizadas
 *   **Core:** React 18, TypeScript, Vite.
-*   **Gestión de Estado:** Context API (Theme & Language).
+*   **Animaciones:** **Framer Motion** (transiciones de página, gestos, entradas staggered).
+*   **Gestión de Estado:** Context API (Theme, Language & Favorites).
 *   **Enrutamiento:** React Router DOM v6.
-*   **Peticiones HTTP:** Axios + Fallback a Mock Data.
-*   **Estilos:** Tailwind CSS 3.x, Animate.css (opcional).
+*   **Peticiones HTTP:** Axios + Fallback a Mock Data enriquecido.
+*   **Estilos:** Tailwind CSS 3.x.
 *   **Branding:** Logo original diseñado por el equipo.
 
 ## 🚀 Instrucciones de Instalación
