@@ -53,10 +53,6 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         });
     };
 
-    const removeFavorite = (id: number) => {
-        setFavorites(prev => prev.filter(f => f.id !== id));
-    };
-
     const isFavorite = (id: number) => {
         return favorites.some(f => f.id === id);
     };

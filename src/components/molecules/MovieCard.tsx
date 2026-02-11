@@ -110,7 +110,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ id, title, posterPath, rating, ty
 
                     <div className="absolute bottom-3 right-3">
                         <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full bg-black/80 backdrop-blur-md text-[10px] font-bold border-2 ${getRatingColor(rating)} shadow-lg`}>
-                            {rating.toFixed(1)}
+                            {(rating || 0).toFixed(1)}
                         </span>
                     </div>
                 </div>
