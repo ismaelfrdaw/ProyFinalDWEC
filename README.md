@@ -1,43 +1,47 @@
-# 🎬 CINEFLIX - Proyecto Final React 2º DAW
+# 🎬 MJI FILMS - Proyecto Final React 2º DAW
+
+<p align="center">
+  <img src="src/assets/logo.jpg" alt="MJI Films Logo" width="200" style="border-radius: 50%">
+</p>
 
 **Equipo de Desarrollo:**
-*   Ismael
-*   Jose Luis
-*   Mario
+*   **Ismael** | **Jose Luis** | **Mario**
 
 ## 📋 Objetivos
-El objetivo principal de este proyecto es desarrollar una **Aplicación de Página Única (SPA)** moderna y funcional utilizando el ecosistema de **React** y **TypeScript**. La aplicación permite a los usuarios explorar, buscar y filtrar información sobre películas y series de televisión utilizando la API pública de **The Movie Database (TMDB)**.
+El objetivo principal de este proyecto es desarrollar una **Aplicación de Página Única (SPA)** moderna y funcional utilizando el ecosistema de **React** y **TypeScript**. **MJI Films** permite a los usuarios explorar, buscar y descubrir recomendaciones personalizadas sobre películas y series de televisión utilizando la API de **TMDB**.
 
 Este proyecto demuestra el dominio de:
-*   Arquitectura de componentes (Atomic Design).
-*   Enrutamiento complejo con **React Router v6**.
-*   Manejo de estado y efectos asíncronos (Hooks).
+*   Arquitectura de componentes (**Atomic Design**).
+*   Enrutamiento avanzado con **React Router v6**.
+*   Manejo de estado global y contextos (**Context API**).
+*   Internacionalización (**i18n**) nativa (ES/EN).
+*   Persistencia de preferencias (Tema y Idioma).
 *   Integración de APIs externas con **Axios**.
-*   Estilizado moderno y responsivo con **Tailwind CSS**.
+*   Estilizado premium con **Tailwind CSS**.
 
 ## ✨ Características Principales
-1.  **Exploración de Tendencias:** Página de inicio con las películas y series más populares del momento, actualizadas diariamente.
-2.  **Búsqueda en Tiempo Real:** Buscador global que permite encontrar contenidos por título.
-3.  **Filtrado Avanzado:** Página dedicada (`/movies`) para filtrar películas por **Género** y **Criterios de Ordenación** (Popularidad, Votos, Novedades).
-4.  **Detalles Exquisitos:** Vistas de detalle inmersivas con imágenes de fondo (backdrops), pósters, puntuaciones, sinopsis y reparto.
-5.  **Diseño Responsivo:** Interfaz adaptada a móviles, tablets y escritorio con un tema oscuro "Cinemático".
+1.  **Exploración de Tendencias:** Portada dinámica con los contenidos más populares.
+2.  **Recomendador Dinámico (Quiz):** Algoritmo inteligente que recomienda películas/series basadas en las respuestas del usuario a un test rápido.
+3.  **Búsqueda Global:** Buscador integrado para localizar cualquier título en la inmensa base de datos de TMDB.
+4.  **Multilenguaje Real:** Soporte completo para **Español** e **Inglés**, incluyendo metadatos de la API.
+5.  **Modo Oscuro/Claro:** Interfaz cinemática con selector de tema para una experiencia de visualización óptima.
+6.  **Trailers Integrados:** Reproducción nativa de trailers de YouTube dentro de la ficha de detalle.
+7.  **Filtrado Avanzado:** Catálogo completo con filtros por género y ordenación inteligente.
 
 ## 🛠️ Tecnologías Utilizadas
 *   **Core:** React 18, TypeScript, Vite.
+*   **Gestión de Estado:** Context API (Theme & Language).
 *   **Enrutamiento:** React Router DOM v6.
-*   **Peticiones HTTP:** Axios.
-*   **Estilos:** Tailwind CSS, PostCSS.
-*   **Iconos & UI:** Lucide React (opcional), Heroicons.
-*   **API:** The Movie Database (TMDB) API v3.
+*   **Peticiones HTTP:** Axios + Fallback a Mock Data.
+*   **Estilos:** Tailwind CSS 3.x, Animate.css (opcional).
+*   **Branding:** Logo original diseñado por el equipo.
 
 ## 🚀 Instrucciones de Instalación
 
-Sigue estos pasos para ejecutar el proyecto en tu máquina local:
-
 1.  **Clonar el repositorio:**
     ```bash
-    git clone https://github.com/tu-usuario/cineflix-proyecto-final.git
-    cd cineflix-proyecto-final
+    git clone https://github.com/ismaelfrdaw/ProyFinalDWEC.git
+    cd proyfinaldwec
     ```
 
 2.  **Instalar dependencias:**
@@ -46,7 +50,7 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
     ```
 
 3.  **Configurar Variables de Entorno:**
-    *   Crea un archivo `.env` en la raíz del proyecto (basado en `.env.example`).
+    *   Crea un archivo `.env` en la raíz (basado en `.env.example`).
     *   Añade tu API Key de TMDB:
         ```
         VITE_TMDB_API_KEY=tu_api_key_aqui
@@ -56,48 +60,25 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
     ```bash
     npm run dev
     ```
-    La aplicación estará disponible en `http://localhost:5173`.
 
 ## 📖 Guía de Uso
 
-### Navegación
-*   **Inicio:** Muestra un carrusel (Hero) con la película top #1 y listas horizontales de tendencias.
-*   **Películas:** Accede al catálogo completo. Usa los "Badges" superiores para filtrar por *Acción, Comedia, Drama...* y el selector para ordenar los resultados.
-*   **Buscador:** Escribe en la barra de búsqueda de la cabecera o de la portada para encontrar títulos específicos.
+*   **Quiz:** Prueba el botón "Recomendador" en la cabecera para encontrar tu próxima película favorita según tu estado de ánimo.
+*   **Traducciones:** Cambia entre "ES" y "EN" al instante con el toggle situado junto al tema.
+*   **Detalles:** Pulsa en cualquier tarjeta para ver el trailer, sinopsis y detalles técnicos.
 
-### Estructura del Proyecto
-El código sigue una arquitectura escalable y modular:
-
+## 📁 Estructura del Proyecto
 ```
 src/
-├── components/       # Componentes organizados por Atomic Design
-│   ├── atoms/        # Botones, Inputs, Badges, Loaders
-│   ├── molecules/    # Tarjetas de película, Barras de búsqueda
-│   └── organisms/    # Grids de películas, Navbar, Footer
-├── layout/           # Layouts principales (MainLayout)
-├── pages/            # Vistas de las rutas (Home, Search, Details, Movies)
-├── router/           # Configuración de rutas (React Router)
-├── services/         # Cliente Axios y funciones de la API
-└── types/            # Interfaces TypeScript para tipado estricto
+├── assets/           # Branding y recursos estáticos (Logo)
+├── components/       # UI siguiendo Atomic Design (Atoms, Molecules, Organisms)
+├── context/          # Proveedores de Tema e Idioma
+├── i18n/             # Diccionarios de traducción (ES/EN)
+├── layout/           # Estructura base MainLayout
+├── pages/            # Vistas (Home, Search, Details, Movies, Quiz)
+├── services/         # Cliente API (Axios) y Mock Data Service
+└── types/            # Tipado estricto TS
 ```
 
-## 📡 Documentación de la API
-La aplicación consume los siguientes endpoints de TMDB:
-
-*   `GET /trending/all/{time_window}`: Para la portada.
-*   `GET /search/multi`: Para la barra de búsqueda.
-*   `GET /discover/movie`: Para el filtrado y ordenación.
-*   `GET /movie/{id}` y `GET /tv/{id}`: Para las vistas de detalle.
-*   `GET /genre/movie/list`: Para obtener la lista de géneros disponibles.
-
-## 📝 Notas de Implementación
-*   **Routing Dinámico:** Se ha implementado una ruta genérica `/movie/:id` y `/tv/:id` que reutiliza el componente `DetailsPage` adaptándolo según el tipo de contenido.
-*   **Optimización:** Se usa `Debounce` en la búsqueda para minimizar las llamadas a la API mientras el usuario escribe.
-*   **Diseño Atómico:** Los componentes base (`Button`, `Badge`) son altamente reutilizables y permiten cambiar el diseño de toda la app desde un solo punto.
-
-## 🌐 Aplicación Desplegada
-Puedes ver la versión en producción aquí:
-*(Enlace pendiente de despliegue en Vercel/Netlify)*
-
 ---
-Desarrollado con ❤️ por **Ismael, Jose Luis y Mario** para **Desarrollo Web en Entorno Cliente**.
+Desarrollado con ❤️ por **Ismael, Jose Luis y Mario**. © 2026 MJI Films.
