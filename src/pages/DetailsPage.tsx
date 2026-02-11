@@ -86,7 +86,7 @@ const DetailsPage = () => {
             className="relative"
         >
             {/* Backdrop */}
-            <div className="relative h-[40vh] md:h-[60vh] overflow-hidden">
+            <div className="relative h-[30vh] md:h-[45vh] overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-110 hover:scale-100"
                     style={{ backgroundImage: `url(${imageUrl(item.backdrop_path, 'original')})` }}
@@ -95,14 +95,14 @@ const DetailsPage = () => {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 relative z-10 -mt-32 md:-mt-48 pb-20">
-                <div className="flex flex-col md:flex-row gap-12">
+            <div className="container mx-auto px-4 relative z-10 -mt-24 md:-mt-32 pb-20">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
                     {/* Poster */}
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="flex-shrink-0 mx-auto md:mx-0 w-64 md:w-96"
+                        className="flex-shrink-0 mx-auto md:mx-0 w-64 md:w-80 lg:w-96"
                     >
                         <div className="relative group">
                             <img
@@ -128,37 +128,37 @@ const DetailsPage = () => {
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.3 }}
                         >
-                            <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter leading-none">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 uppercase tracking-tighter leading-none">
                                 {title}
                                 <span className="text-gray-500 font-light block md:inline md:ml-4">{year}</span>
                             </h1>
 
-                            <div className="flex flex-wrap gap-3 mb-8">
+                            <div className="flex flex-wrap gap-2 mb-6">
                                 <Badge variant="primary">{isMovie ? t.details.movie : t.details.tv}</Badge>
                                 {item.genres?.map((g: any) => (
                                     <Badge key={g.id} variant="outline">{g.name}</Badge>
                                 ))}
                             </div>
 
-                            <div className="flex items-center gap-6 mb-10">
+                            <div className="flex items-center gap-6 mb-8">
                                 <div className="flex items-center gap-3">
-                                    <div className={`w-14 h-14 flex items-center justify-center rounded-full border-4 font-black text-xl bg-black/40 ${item.vote_average >= 7 ? 'border-green-500 text-green-500' : 'border-yellow-500 text-yellow-500'}`}>
+                                    <div className={`w-12 h-12 flex items-center justify-center rounded-full border-4 font-black text-lg bg-black/40 ${item.vote_average >= 7 ? 'border-green-500 text-green-500' : 'border-yellow-500 text-yellow-500'}`}>
                                         {item.vote_average.toFixed(1)}
                                     </div>
-                                    <div className="text-xs uppercase font-bold text-gray-400 tracking-widest">{t.details.score}</div>
+                                    <div className="text-[10px] uppercase font-bold text-gray-400 tracking-widest leading-none">{t.details.score}</div>
                                 </div>
                                 <Button
                                     variant="primary"
                                     onClick={() => setShowTrailer(true)}
                                     disabled={!item.video_key}
-                                    className="px-8 py-4 rounded-full shadow-lg shadow-red-900/30 font-black uppercase tracking-widest text-sm"
+                                    className="px-6 py-3 rounded-full shadow-lg shadow-red-900/30 font-black uppercase tracking-widest text-xs"
                                 >
                                     {item.video_key ? t.details.play_trailer : t.details.trailer_unavailable}
                                 </Button>
                             </div>
 
-                            <div className="mb-12 max-w-3xl">
-                                <h3 className="text-xs font-black text-red-600 uppercase tracking-[0.3em] mb-4">{t.details.overview}</h3>
+                            <div className="mb-8 max-w-3xl">
+                                <h3 className="text-[10px] font-black text-red-600 uppercase tracking-[0.3em] mb-2">{t.details.overview}</h3>
                                 <p className="text-gray-300 leading-relaxed text-lg font-medium">
                                     {item.overview || t.details.no_overview}
                                 </p>
