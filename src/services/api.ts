@@ -144,6 +144,46 @@ export const getGenres = async (): Promise<{ id: number; name: string }[]> => {
     }
 };
 
+export const getMovieCredits = async (id: number) => {
+    if (shouldUseMock()) return { cast: [] };
+    try {
+        const response = await api.get(`/movie/${id}/credits`);
+        return response.data;
+    } catch (e) {
+        return { cast: [] };
+    }
+};
+
+export const getTVCredits = async (id: number) => {
+    if (shouldUseMock()) return { cast: [] };
+    try {
+        const response = await api.get(`/tv/${id}/credits`);
+        return response.data;
+    } catch (e) {
+        return { cast: [] };
+    }
+};
+
+export const getSimilarMovies = async (id: number): Promise<Movie[]> => {
+    if (shouldUseMock()) return mockMovies.slice(0, 5);
+    try {
+        const response = await api.get<SearchResult>(`/movie/${id}/similar`);
+        return response.data.results as Movie[];
+    } catch (e) {
+        return mockMovies.slice(0, 5);
+    }
+};
+
+export const getSimilarTV = async (id: number): Promise<TVShow[]> => {
+    if (shouldUseMock()) return mockTVShows.slice(0, 5);
+    try {
+        const response = await api.get<SearchResult>(`/tv/${id}/similar`);
+        return response.data.results as TVShow[];
+    } catch (e) {
+        return mockTVShows.slice(0, 5);
+    }
+};
+
 export const imageUrl = (path: string | null, size: string = 'w500') => {
     if (!path) return `https://placehold.co/500x750?text=No+Image`;
     if (path.startsWith('http')) return path; // Return absolute URLs as is

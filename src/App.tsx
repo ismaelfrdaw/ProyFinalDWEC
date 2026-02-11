@@ -6,6 +6,8 @@ import MoviesPage from './pages/MoviesPage';
 import DetailsPage from './pages/DetailsPage';
 import QuizPage from './pages/QuizPage';
 
+import FavoritesPage from './pages/FavoritesPage';
+
 function App() {
   console.log("MJI Films App Initializing...");
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="movies" element={<MoviesPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
           <Route path="quiz" element={<QuizPage />} />
           <Route path="movie/:id" element={<DetailsPage />} />
           <Route path="tv/:id" element={<DetailsPage />} />

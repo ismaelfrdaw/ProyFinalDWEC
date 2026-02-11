@@ -2,8 +2,10 @@ import React from 'react';
 import MovieCard from '../molecules/MovieCard';
 import type { Movie, TVShow } from '../../types';
 
+import type { FavoriteItem } from '../../context/FavoritesContext';
+
 interface MovieGridProps {
-    items: (Movie | TVShow)[];
+    items: (Movie | TVShow | FavoriteItem)[];
     title?: string;
     loading?: boolean;
 }
@@ -32,19 +34,32 @@ const MovieGrid: React.FC<MovieGridProps> = ({ items, title, loading = false }) 
             ) : (
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                     {items.map((item) => {
-                        const isMovie = 'title' in item;
-                        const title = isMovie ? (item as Movie).title : (item as TVShow).name;
-                        const date = isMovie ? (item as Movie).release_date : (item as TVShow).first_air_date;
-                        const year = date ? new Date(date).getFullYear().toString() : '';
+                        // Check if it's already a FavoriteItem (has media_type)
+                        const isFav = 'media_type' in item;
+                        const isMovie = isFav ? (item as FavoriteItem).media_type === 'movie' : 'title' in item;
+
+                        const title = isFav
+                            ? (item as FavoriteItem).title
+                            : (isMovie ? (item as Movie).title : (item as TVShow).name);
+
+                        const date = isFav
+                            ? (item as FavoriteItem).release_date
+                            : (isMovie ? (item as Movie).release_date : (item as TVShow).first_air_date);
+
+                        const type = isFav
+                            ? (item as FavoriteItem).media_type
+                            : (isMovie ? 'movie' : 'tv');
+
+                        const year = date ? (date.includes('-') ? new Date(date).getFullYear().toString() : date) : '';
 
                         return (
                             <MovieCard
-                                key={item.id}
+                                key={`${type}-${item.id}`}
                                 id={item.id}
                                 title={title}
                                 posterPath={item.poster_path}
-                                rating={item.vote_average}
-                                type={isMovie ? 'movie' : 'tv'}
+                                rating={isFav ? (item as FavoriteItem).vote_average : item.vote_average}
+                                type={type as 'movie' | 'tv'}
                                 year={year}
                             />
                         );

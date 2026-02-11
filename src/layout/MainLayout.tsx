@@ -1,11 +1,15 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
+import { useFavorites } from '../context/FavoritesContext';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.jpg';
 
 const MainLayout = () => {
     const { theme, toggleTheme } = useTheme();
     const { language, toggleLanguage, t } = useLanguage();
+    const { favorites } = useFavorites();
+    const location = useLocation();
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 dark-mode-override text-gray-900 dark:text-white font-sans transition-colors duration-300">
@@ -27,6 +31,18 @@ const MainLayout = () => {
                             <Link to="/movies" className="hover:text-red-600 transition">{t.nav.movies}</Link>
                             <Link to="/quiz" className="hover:text-amber-500 transition font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">{t.nav.quiz}</Link>
                             <Link to="/search" className="hover:text-red-600 transition">{t.nav.search}</Link>
+                            <Link to="/favorites" className="relative hover:text-red-600 transition flex items-center gap-1.5 focus:outline-none">
+                                {t.nav.favorites}
+                                {favorites.length > 0 && (
+                                    <motion.span
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        className="flex items-center justify-center bg-red-600 text-white text-[10px] w-4 h-4 rounded-full font-bold"
+                                    >
+                                        {favorites.length}
+                                    </motion.span>
+                                )}
+                            </Link>
                         </nav>
 
                         <div className="flex items-center gap-2 border-l border-gray-300 dark:border-gray-700 pl-4 ml-2">
@@ -56,8 +72,19 @@ const MainLayout = () => {
                 </div>
             </header>
 
-            <main className="flex-grow pt-16">
-                <Outlet />
+            <main className="flex-grow pt-16 overflow-x-hidden">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={location.pathname}
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -10 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="h-full"
+                    >
+                        <Outlet />
+                    </motion.div>
+                </AnimatePresence>
             </main>
 
             <footer className="bg-black py-8 border-t border-white/5 mt-auto transition-colors duration-300">

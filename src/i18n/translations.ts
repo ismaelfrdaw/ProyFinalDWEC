@@ -4,7 +4,8 @@ export const translations = {
             home: "Inicio",
             movies: "Películas",
             quiz: "Recomendador",
-            search: "Buscar"
+            search: "Buscar",
+            favorites: "Mi Lista"
         },
         home: {
             welcome: "Bienvenido a",
@@ -41,7 +42,15 @@ export const translations = {
             no_overview: "No hay descripción disponible.",
             no_content: "No se encontró contenido.",
             movie: "Película",
-            tv: "Serie"
+            tv: "Serie",
+            cast: "Reparto Principal",
+            similar: "Te puede interesar"
+        },
+        favorites: {
+            title: "Mi Lista",
+            empty: "Tu lista está vacía. ¡Empieza a añadir favoritos!",
+            add: "Añadir a favoritos",
+            remove: "Quitar de favoritos"
         },
         quiz: {
             title: "¿No sabes qué ver hoy?",
@@ -148,7 +157,8 @@ export const translations = {
             home: "Home",
             movies: "Movies",
             quiz: "Recommender",
-            search: "Search"
+            search: "Search",
+            favorites: "My List"
         },
         home: {
             welcome: "Welcome to",
@@ -185,7 +195,15 @@ export const translations = {
             no_overview: "No description available.",
             no_content: "No content found.",
             movie: "Movie",
-            tv: "TV Show"
+            tv: "TV Show",
+            cast: "Top Cast",
+            similar: "You might also like"
+        },
+        favorites: {
+            title: "My List",
+            empty: "Your list is empty. Start adding some favorites!",
+            add: "Add to favorites",
+            remove: "Remove from favorites"
         },
         quiz: {
             title: "Don't know what to watch?",
