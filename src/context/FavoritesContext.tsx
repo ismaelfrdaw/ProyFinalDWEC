@@ -22,24 +22,34 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
 
     useEffect(() => {
+        // Load only once on mount
         const saved = localStorage.getItem('mji_favorites');
         if (saved) {
             try {
-                setFavorites(JSON.parse(saved));
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed)) {
+                    setFavorites(parsed);
+                }
             } catch (e) {
                 console.error("Error loading favorites:", e);
             }
         }
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem('mji_favorites', JSON.stringify(favorites));
-    }, [favorites]);
-
     const addFavorite = (item: FavoriteItem) => {
         setFavorites(prev => {
             if (prev.find(f => f.id === item.id)) return prev;
-            return [...prev, item];
+            const updated = [...prev, item];
+            localStorage.setItem('mji_favorites', JSON.stringify(updated));
+            return updated;
+        });
+    };
+
+    const removeFavorite = (id: number) => {
+        setFavorites(prev => {
+            const updated = prev.filter(f => f.id !== id);
+            localStorage.setItem('mji_favorites', JSON.stringify(updated));
+            return updated;
         });
     };
 
