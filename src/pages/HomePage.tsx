@@ -68,7 +68,7 @@ const HomePage = () => {
             </section>
 
             {/* Content Section */}
-            <div className="container mx-auto px-4 -mt-20 relative z-20 space-y-12 pb-12">
+            <div className="container mx-auto px-4 -mt-8 relative z-20 space-y-12 pb-12">
 
                 {/* Quiz CTA */}
                 <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden group">
