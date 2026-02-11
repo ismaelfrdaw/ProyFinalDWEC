@@ -86,7 +86,7 @@ const DetailsPage = () => {
             className="relative"
         >
             {/* Backdrop */}
-            <div className="relative h-[30vh] md:h-[45vh] overflow-hidden">
+            <div className="relative h-[20vh] md:h-[30vh] overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-110 hover:scale-100"
                     style={{ backgroundImage: `url(${imageUrl(item.backdrop_path, 'original')})` }}
@@ -95,8 +95,8 @@ const DetailsPage = () => {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 relative z-10 -mt-24 md:-mt-32 pb-20">
-                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+            <div className="container mx-auto px-4 relative z-10 -mt-16 md:-mt-24 pb-20">
+                <div className="flex flex-col md:flex-row gap-6 md:gap-10">
                     {/* Poster */}
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
