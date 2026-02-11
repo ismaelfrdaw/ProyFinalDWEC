@@ -7,7 +7,7 @@ import DetailsPage from './pages/DetailsPage';
 import QuizPage from './pages/QuizPage';
 
 function App() {
-  console.log("App Rendering..."); // Debug log
+  console.log("MJI Films App Initializing...");
   return (
     <BrowserRouter>
       <Routes>
@@ -18,7 +18,12 @@ function App() {
           <Route path="quiz" element={<QuizPage />} />
           <Route path="movie/:id" element={<DetailsPage />} />
           <Route path="tv/:id" element={<DetailsPage />} />
-          <Route path="*" element={<div className="p-10 text-white">404 - Página no encontrada</div>} />
+          <Route path="*" element={
+            <div className="min-h-[50vh] flex flex-col items-center justify-center text-white">
+              <h1 className="text-6xl font-black text-red-600 mb-4">404</h1>
+              <p className="text-xl text-gray-400">Página no encontrada</p>
+            </div>
+          } />
         </Route>
       </Routes>
     </BrowserRouter>
