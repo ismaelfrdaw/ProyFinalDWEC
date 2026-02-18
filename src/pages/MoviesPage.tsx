@@ -4,7 +4,6 @@ import Loader from '../components/atoms/Loader';
 import { discoverMovies, getGenres } from '../services/api';
 import type { Movie } from '../types';
 import { useLanguage } from '../context/LanguageContext';
-import { motion } from 'framer-motion';
 
 const MoviesPage = () => {
     const { t } = useLanguage();
@@ -56,13 +55,7 @@ const MoviesPage = () => {
     }, [selectedGenre, sortBy, page]);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
-            className="container mx-auto px-4 py-8"
-        >
+        <div className="container mx-auto px-4 py-8">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-l-4 border-red-600 pl-4">
                 {t.movies.title}
             </h1>
@@ -122,7 +115,7 @@ const MoviesPage = () => {
                     </button>
                 </div>
             )}
-        </motion.div>
+        </div>
     );
 };
 

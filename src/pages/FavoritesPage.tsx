@@ -1,19 +1,13 @@
 import { useFavorites } from '../context/FavoritesContext';
 import { useLanguage } from '../context/LanguageContext';
 import MovieGrid from '../components/organisms/MovieGrid';
-import { motion } from 'framer-motion';
 
 const FavoritesPage = () => {
     const { favorites } = useFavorites();
     const { t } = useLanguage();
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="container mx-auto px-4 py-12"
-        >
+        <div className="container mx-auto px-4 py-12">
             <div className="flex items-center gap-4 mb-10">
                 <div className="w-1.5 h-10 bg-red-600 rounded-full shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
                 <div>
@@ -37,7 +31,7 @@ const FavoritesPage = () => {
                     <p className="text-gray-500 text-sm">Explora el catálogo y añade lo que quieras ver más tarde.</p>
                 </div>
             )}
-        </motion.div>
+        </div>
     );
 };
 

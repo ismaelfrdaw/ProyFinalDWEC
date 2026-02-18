@@ -6,7 +6,6 @@ import SearchBar from '../components/molecules/SearchBar';
 import { searchMulti, getTrending } from '../services/api';
 import type { Movie, TVShow } from '../types';
 import { useLanguage } from '../context/LanguageContext';
-import { motion } from 'framer-motion';
 
 const SearchPage = () => {
     const { t } = useLanguage();
@@ -54,13 +53,7 @@ const SearchPage = () => {
     }, [query]);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.02 }}
-            transition={{ duration: 0.5 }}
-            className="min-h-screen bg-gray-900 transition-colors duration-500"
-        >
+        <div className="min-h-screen bg-gray-900 transition-colors duration-500">
             {/* Search Hero */}
             <div className="bg-gradient-to-b from-black to-gray-900 py-16 md:py-24 border-b border-white/5">
                 <div className="container mx-auto px-4">
@@ -125,7 +118,7 @@ const SearchPage = () => {
                     </div>
                 )}
             </div>
-        </motion.div>
+        </div>
     );
 };
 
