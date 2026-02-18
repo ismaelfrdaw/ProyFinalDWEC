@@ -15,7 +15,7 @@ Este proyecto demuestra el dominio de:
 *   Enrutamiento avanzado con **React Router v6**.
 *   Manejo de estado global y contextos (**Context API**).
 *   Internacionalización (**i18n**) nativa (ES/EN).
-*   Persistencia de preferencias (Tema y Idioma).
+*   Persistencia de preferencias (Tema e Idioma).
 *   Integración de APIs externas con **Axios**.
 *   Estilizado premium con **Tailwind CSS**.
 
@@ -67,8 +67,8 @@ Este proyecto demuestra el dominio de:
 ## 📖 Guía de Uso
 
 *   **Quiz:** Prueba el botón "Recomendador" en la cabecera para encontrar tu próxima película favorita según tu estado de ánimo.
-*   **Traducciones:** Cambia entre "ES" y "EN" al instante con el toggle situado junto al tema.
-*   **Detalles:** Pulsa en cualquier tarjeta para ver el trailer, sinopsis y detalles técnicos.
+*   **Traducciones:** Cambia entre "ES" y "EN" al instante con el selector situado junto al botón de tema.
+*   **Detalles:** Pulsa en cualquier tarjeta para ver el tráiler, la sinopsis y los detalles técnicos.
 
 ## 📁 Estructura del Proyecto
 ```
@@ -84,4 +84,4 @@ src/
 ```
 
 ---
-Desarrollado con ❤️ por **Ismael, Jose Luis y Mario**. © 2026 MJI Films.
+Desarrollado con ❤️ por **Ismael**, **Jose Luis** y **Mario**. © 2026 MJI Films.
