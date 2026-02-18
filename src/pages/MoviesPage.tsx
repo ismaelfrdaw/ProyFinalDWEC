@@ -4,6 +4,7 @@ import Loader from '../components/atoms/Loader';
 import { discoverMovies, getGenres } from '../services/api';
 import type { Movie } from '../types';
 import { useLanguage } from '../context/LanguageContext';
+import { motion } from 'framer-motion';
 
 const MoviesPage = () => {
     const { t } = useLanguage();
@@ -55,8 +56,16 @@ const MoviesPage = () => {
     }, [selectedGenre, sortBy, page]);
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-l-4 border-red-600 pl-4">{t.movies.title}</h1>
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className="container mx-auto px-4 py-8"
+        >
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 border-l-4 border-red-600 pl-4">
+                {t.movies.title}
+            </h1>
 
             {/* Filters */}
             <div className="mb-8 p-6 bg-gray-100 dark:bg-gray-800 rounded-lg transition-colors shadow-sm">
@@ -68,7 +77,7 @@ const MoviesPage = () => {
                     >
                         {t.movies.all_genres}
                     </button>
-                    {genres.map(genre => (
+                    {genres.length > 0 && genres.map(genre => (
                         <button
                             key={genre.id}
                             onClick={() => setSelectedGenre(genre.id)}
@@ -113,7 +122,7 @@ const MoviesPage = () => {
                     </button>
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 
