@@ -1,0 +1,16 @@
+{
+    "short_name": "MJI Films",
+    "name": "MJI Films - Películas & Series",
+    "icons": [
+        {
+            "src": "/logo.jpg",
+            "type": "image/jpeg",
+            "sizes": "192x192 512x512"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#111827",
+    "display": "standalone",
+    "theme_color": "#dc2626",
+    "description": "Tu portal favorito de cine y series by Ismael, Jose Luis y Mario."
+}
